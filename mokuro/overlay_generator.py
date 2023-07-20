@@ -119,6 +119,9 @@ class OverlayGenerator:
             with tag('body'):
                 self.top_menu(doc, tag, text, len(page_htmls))
 
+                with tag('div', id='trantext');
+                    pass
+
                 with tag('div', id='dimOverlay'):
                     pass
 

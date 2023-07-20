@@ -116,6 +116,13 @@ function initTextBoxes() {
         textBoxes[i].addEventListener('click', function (e) {
             if (state.toggleOCRTextBoxes) {
                 this.classList.add('hovered');
+                let textValue = this.innerHTML;
+                let trantext = document.getElementById("trantext")
+                let trantextComplete = '';
+                let trantextlist = this.childNodes.forEach(textt => {
+                    trantextComplete = trantextComplete + textt.innerHTML;
+                })
+                trantext.innerHTML = '<p>' + trantextComplete + '</p>';
                 // Remove hovered state from all other .textBoxes
                 for (let j = 0; j < textBoxes.length; j++) {
                     if (i !== j) {

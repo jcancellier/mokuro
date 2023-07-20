@@ -257,6 +257,21 @@ body {
     display: block;
 }
 
+#trantext {
+    position: fixed;
+    z-index: 1000;
+    top: 3%;
+    right: 10%;
+    margin: 5px;
+    background: var(--color1);
+    border-radius: 3px;
+    box-shadow: 0px 0px 8px 0px var(--color3a);
+    transition: all 0.5s ease-out, max-width 0s ease-in;
+    visibility: visible;
+    opacity: 1;
+    max-width: 100vw;
+}
+
 #dimOverlay {
     display: none;
     position: fixed;
