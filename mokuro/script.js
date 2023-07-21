@@ -143,7 +143,53 @@ function initTextBoxes() {
             }
         }
     });
+
+    const trantext = document.getElementById("trantext")
+    trantext.addEventListener('click', function (e) {
+        trantext.classList.remove('fetchingError');
+        trantext.classList.add('fetching');
+
+        const trantextInner = trantext.childNodes[0];
+        const trantextText = trantextInner.innerHTML;
+
+        translateJapaneseToEnglish(trantextText)
+            .then(translatedText => {
+                trantextInner.innerHTML += '<p>' + translatedText + '</p>';
+                trantext.classList.remove('fetching');
+            })
+            .catch(error => {
+                trantext.classList.add('fetchingError');
+            })
+    })
 }
+
+async function translateJapaneseToEnglish(japaneseText) {
+    const data = {
+      "text": japaneseText,
+      "target_lang": "EN"
+    };
+  
+    try {
+      const response = await fetch('https://deepl-proxy.fly.dev/api/v1/translate', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        const translatedText = result.translations[0].text;
+        return translatedText;
+      } else {
+        throw new Error('Translation failed');
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      return null;
+    }
+  }
 
 function updateProperties() {
     if (state.textBoxBorders) {
