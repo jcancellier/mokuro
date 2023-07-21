@@ -114,8 +114,6 @@ function initTextBoxes() {
     let textBoxes = document.querySelectorAll('.textBox');
     for (let i = 0; i < textBoxes.length; i++) {
         textBoxes[i].addEventListener('click', function (e) {
-            if (state.toggleOCRTextBoxes) {
-                this.classList.add('hovered');
                 let textValue = this.innerHTML;
                 let trantext = document.getElementById("trantext")
                 let trantextComplete = '';
@@ -129,7 +127,6 @@ function initTextBoxes() {
                         textBoxes[j].classList.remove('hovered');
                     }
                 }
-            }
         });
     }
 // When clicking off of a .textBox, remove the hovered state.
