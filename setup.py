@@ -5,8 +5,8 @@ from setuptools import setup, find_packages
 long_description = (Path(__file__).parent / "README.md").read_text('utf-8').split('# Installation')[0]
 
 setup(
-    name="mokuro",
-    version='0.1.7',
+    name="JoshMokuro",
+    version='0.2',
     description="Browser reader for manga with selectable text",
     long_description=long_description,
     long_description_content_type="text/markdown",
